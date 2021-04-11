@@ -30,7 +30,8 @@ function setCaretPos(el, commonPos)
 		if (node.nodeType == 3) {
 			let nextCharIndex = charIndex + node.length;
 			if (!start && commonPos >= charIndex && (commonPos < nextCharIndex || nodeStack.length == 0 || charIndex + node.length >= commonPos)) {
-				range.setStart(node, commonPos - charIndex);
+				let indx = commonPos - charIndex < node.length ? commonPos - charIndex : node.length;
+				range.setStart(node, indx);
 				start = true;
 			}
 			if (start && commonPos >= charIndex && commonPos <= nextCharIndex) {

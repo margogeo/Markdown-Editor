@@ -10,6 +10,7 @@ let markFlags = [1, 3, 3, 3, 3];  //1-only single char, 3-single or double, 2-on
 let htmlTags = ["code", "em", "strong", "em", "strong"]; //html tags
 
 let isParagraphClosed = true;
+let currentWord = "";
 
 function closeParagraph() {
     if (tags.length) {
@@ -50,6 +51,10 @@ function isSpecial(c) { //replacing special symbols so that they are not html ta
     return false;
 }
 
+function isAlpha(c) {
+	return c.toLowerCase() != c.toUpperCase();
+}
+
 function parseMarkdown(input) {
     //variables for current opened tags
     let isPrevLineEmpty = false;
@@ -61,6 +66,7 @@ function parseMarkdown(input) {
     source = "";
     let array = input.split("\n");
     for (let str = 0; str < array.length; str++) {
+        currentWord = "";
         if (str > 0) {
             if(nEmpty < 2) {
 				source += "<br>";
@@ -246,8 +252,28 @@ function parseMarkdown(input) {
                 c = s.charAt(ns++);  //Keep only next symbol after
             }
             //if character isn't special add it as text
-            preview += c;
-            source += c;
+	
+			if(isAlpha(c)) {
+				let word=c;
+				while( ns < s.length ) {
+					let nc = s[ns++];
+					if( !isAlpha(nc)) {
+						ns--;
+						break;
+					}
+					else
+						word += nc;
+				}
+				let spell = word.length > 1 ? spellCheck(word) : true;
+				if(!spell) source += "<font color = 'red'><u>";
+				source += word;
+				preview += word;
+				if(!spell) source += "</u></font>";
+			}
+			else {
+				preview += c;
+				source += c;
+			}
         }
         //closing heading tag and list item tag in the end of the string
         if (isHeading) {
