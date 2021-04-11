@@ -1,17 +1,15 @@
-#cet {
+#cet, #pview {
     background-color: #ffffff;
     border: 3px solid #8da4cd;
     width:600px;
     height:250px;
     overflow: auto;
+    border-radius: 5px;
 }
 
-#pview {
-    background-color: #ffffff;
-    border: 3px solid #012860;
-    width:600px;
-    height:250px;
-    overflow: auto;
+.heading {
+    width: 470px;
+    display: inline-block;
 }
 
 div {

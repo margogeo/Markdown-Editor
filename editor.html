@@ -5,21 +5,19 @@
     <link rel = "stylesheet" href = "style.css">
     <title>Markdown editor</title>
 </head>
-<body bgcolor=#f0f0f0>
+<body bgcolor ="#cce9ff">
 <center>
-	<div style="width:470px; text-align:left; display: inline-block; ">
-    <h2><u><font color = #6495ed>Markdown editor</font></u></h2>
+	<div class = "heading">
+    <h2><font color = #6495ed>Markdown editor</font></h2>
 	</div>
-    <input type = "button" value="Load sample code" onClick="loadSamplecode();"/> 
-    <div contenteditable = "true" id = "cet" spellcheck = "true">
-    </div>
+    <input type = "button" value = "Load sample code" onClick = "loadSamplecode();"/>
+    <div contenteditable = "true" id = "cet" spellcheck = "true"></div>
 	<br><br>
-	<div style="width:470px; text-align:left; display: inline-block; ">
-	<font size="+2">HTML preview:</font>
+	<div class = "heading">
+	<font size = "+2" color = #6495ed>HTML preview:</font>
 	</div>
     <input type = "checkbox" id = "isLive" checked = "checked"> Live preview </input>
     <div id = "pview"></div>
-
     <script type = 'text/javascript' src = "edit.js"></script>
     <script type = 'text/javascript' src = "MdParser.js"></script>
 </center>
