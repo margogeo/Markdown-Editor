@@ -10,3 +10,5 @@ Supported:
 - links
 - images
 - paragraphs
+
+**Download all the files and open editor.html to use the editor**
